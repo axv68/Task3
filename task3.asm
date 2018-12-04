@@ -1,4 +1,5 @@
-.ORIG x3000
+	.ORIG x3000
+	LD R0 label
 
-
-.END
+label	.FILL x4000 
+	.END
