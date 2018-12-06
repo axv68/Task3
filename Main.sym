@@ -1,0 +1,15 @@
+//Symbol Name		Page Address
+//----------------	------------
+//	KBIVentry               400F
+//	KBSR                    4011
+//	aye                     4013
+//	bar                     4017
+//	cee                     4014
+//	char                    4018
+//	gee                     4015
+//	holding                 4012
+//	isr_loc                 400E
+//	mask                    4010
+//	search                  4007
+//	stack                   400D
+//	you                     4016
