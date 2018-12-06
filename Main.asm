@@ -47,6 +47,29 @@ searchG	LD R1, gee		;check for G
 	ST R4, char		;store 0 to x4600 
 	LD R0, bar		;display pipe bar
 	OUT
+find	LDI R0, holding		
+	BRz find
+	TRAP x21
+	AND R4, R4, #0
+	STI R4, holding
+	LD R1, char	        ;check if previous char holder is blank (if so, can start sequence)
+	BRz findU
+	LD R2, you		;if prev char is U, got to findAG
+	ADD R3, R1, R2
+	BRz findAG
+	LD R2, aye              ;if previous char is A or G, go to findGA
+	ADD R3, R1, R2
+	BRz findGA
+	LD R2, gee
+	ADD R3, R1, R2
+	BRz findGA
+	ST R4, char 		;if char is a C, go back to find
+	BR find
+findU   LD R1, you		;find U, store to prev char spot
+	ADD R2, R0, R1
+	BRnp find
+	ST R0, char
+	BR find
 	HALT
 stack      .FILL x4000
 isr_loc    .FILL x2600
