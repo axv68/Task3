@@ -70,6 +70,23 @@ findU   LD R1, you		;find U, store to prev char spot
 	BRnp find
 	ST R0, char
 	BR find
+findAG	LD R1, aye		;find A or G, store to prev char spot 
+	ADD R2, R0, R1
+	BRz storeit
+	LD R1, gee
+	ADD R2, R0, R1
+	ST R0, char
+	BRnp find
+storeit ST R0, char
+	BR find
+findGA	LD R1, aye
+	ADD R2, R0, R1
+	BRz clear
+	LD R1, gee
+	ADD R2, R0, R1
+	ST R0, char
+	BRnp find
+clear   ST R4, char
 	HALT
 stack      .FILL x4000
 isr_loc    .FILL x2600
